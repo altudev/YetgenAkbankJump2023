@@ -1,56 +1,36 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿using System.Text.Json;
 using YetGenAkbankJump.OOPConsole.Entities;
-using YetGenAkbankJump.OOPConsole.Enums;
 
-var student = new Student()
+var filePath = "C:\\Users\\alper\\Desktop\\AccessControlLogs.txt";
+
+var textFile = File.ReadAllText(filePath);
+
+var splittedLines = textFile.Split("\r\n",StringSplitOptions.RemoveEmptyEntries);
+
+// 7---FRNM3121049B---FP---2023-08-09T10:15:32+00:00
+
+
+List<AccessControlLog> logs = new();
+
+foreach (var splittedLine in splittedLines)
 {
-    Id = Guid.NewGuid(),
-    FirstName = "Alper",
-    LastName = "Tunga",
-    Gender = Gender.Unknown,
-    No = 1,
-    CreatedOn = DateTimeOffset.Now,
-    RegistrationDate = DateTimeOffset.Now.AddHours(-1),
-};
+  var values =  splittedLine.Split("---", StringSplitOptions.RemoveEmptyEntries);
 
-var secondStudent = new Student()
-{
-    Id = Guid.NewGuid(),
-    FirstName = "Yakup",
-    LastName = "Sıtacı",
-    Gender = Gender.Male,
-    No = 2,
-    CreatedOn = DateTimeOffset.Now,
-    RegistrationDate = DateTimeOffset.Now.AddHours(-1)
-};
+  var accessControlLog = new AccessControlLog()
+  {
+      Id = Guid.NewGuid(),
+      CreatedOn = DateTimeOffset.Now,
+      PersonId = Convert.ToInt64(values[0]),
+      DeviceSerialNo = values[1],
+      AccessType = AccessControlLog.ConvertStringToAccessType(values[2]),
+      LogTime = Convert.ToDateTime(values[3])
+  };
 
-List<Student> students = new List<Student>();
+  logs.Add(accessControlLog);
+}
 
-students.Add(student);
+File.WriteAllText("C:\\Users\\alper\\Desktop\\AccessControlLogsJson.txt",JsonSerializer.Serialize(logs));
 
-students.Add(secondStudent);
-
-students.ForEach(x => Console.WriteLine($"Öğrenci Bilgileri: No - {x.No} - {x.FirstName} {x.LastName} {x.Gender} "));
-
-var teacher = new Teacher();
-
-teacher.FirstName = "Alper";
-
-teacher.LastName = "Tunga";
-
-Console.WriteLine(teacher.FullName);
-
-teacher.FirstName = "Ahmet";
-
-teacher.LastName = "Kök";
-
-Console.WriteLine(teacher.FullName);
-
-teacher.SayMyName();
-
-student.SayMyName();
-
-Console.WriteLine(secondStudent.FullName);
+Console.WriteLine("The operation was successfully completed.");
 
 Console.ReadLine();

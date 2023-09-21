@@ -2,11 +2,8 @@
 
 namespace YetGenAkbankJump.OOPConsole.Entities
 {
-    public class Parent:EntityBase<string>
+    public class Category:EntityBase<int>
     {
-        public Parent()
-        {
-           
-        }
+
     }
 }

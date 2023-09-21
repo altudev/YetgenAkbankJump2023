@@ -1,9 +1,8 @@
 ﻿using YetGenAkbankJump.OOPConsole.Common;
-using YetGenAkbankJump.OOPConsole.Enums;
 
 namespace YetGenAkbankJump.OOPConsole.Entities
 {
-    public class Teacher:PersonBase
+    public class Teacher: EntityBase<long>
     {
         public DateTimeOffset RegistrationDate { get; set; }
 

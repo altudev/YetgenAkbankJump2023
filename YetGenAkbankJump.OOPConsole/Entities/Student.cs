@@ -2,7 +2,7 @@
 
 namespace YetGenAkbankJump.OOPConsole.Entities
 {
-    public class Student : PersonBase
+    public class Student : EntityBase<Guid>
     {
         public int No { get; set; }
       
