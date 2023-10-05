@@ -1,0 +1,17 @@
+﻿@model PasswordsIndexViewModel
+
+<h1>Şifreniz:@Model.Password</h1>
+
+<form asp-action="Index" asp-route-viewModel="@Model.PasswordLength">
+    
+    <label>Şifre Uzunluğunu Giriniz</label>
+
+    <input class="form-control" asp-for="PasswordLength"/>
+    
+    <label class="mt-3">Şifre Uzunluğunu Giriniz</label>
+
+    <input class="form-check" type="checkbox" asp-for="IncludeNumbers" />
+
+
+    <button class="btn btn-success mt-3"  type="submit">Kaydet</button>
+</form>
