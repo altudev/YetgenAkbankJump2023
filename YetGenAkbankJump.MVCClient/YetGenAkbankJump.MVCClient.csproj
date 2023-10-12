@@ -4,7 +4,12 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>67a5cc67-ada6-42d7-bd2d-763411b04f40</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Betalgo.OpenAI" Version="7.2.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\YetGenAkbankJump.Shared\YetGenAkbankJump.Shared.csproj" />

@@ -1,8 +1,35 @@
-﻿@{
+﻿@model HomeIndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1>@Model.Prompt</h1>
+    <p>Image Count: @Model.ImageCount</p>
+    
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <div class="form-group">
+            <label for="prompt">Prompt:</label>
+            <input type="text" class="form-control" id="prompt" name="Prompt" value="@Model.Prompt" />
+        </div>
+        <div class="form-group">
+            <label for="imageCount">Image Count:</label>
+            <input type="number" class="form-control" id="imageCount" name="ImageCount" value="@Model.ImageCount" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    @if (Model.ImageUrls is not null && Model.ImageUrls.Any())
+    {
+        <div class="row">
+            @foreach (var imageUrl in Model.ImageUrls)
+            {
+                <div class="col-md-3">
+                    <img src="@imageUrl" alt="Image" class="img-fluid" />
+                </div>
+            }
+        </div>
+    }
 </div>
