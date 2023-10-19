@@ -5,7 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddOpenAIService(settings => settings.ApiKey = "");
+//builder.Services.AddOpenAIService(settings => settings.ApiKey = "");
+
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7030/api/") });
 
 var app = builder.Build();
 

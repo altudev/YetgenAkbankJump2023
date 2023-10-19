@@ -1,0 +1,19 @@
+﻿@model List<YetgenAkbankJump.Domain.Entities.Car>
+
+<div class="container">
+    <div class="row">
+        @foreach (var car in Model)
+        {
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="@car.ImageUrl" class="card-img-top" alt="@car.Make @car.Model">
+                    <div class="card-body">
+                        <h5 class="card-title">@car.Make @car.Model</h5>
+                        <p class="card-text">$@car.Price.ToString("N2")</p>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

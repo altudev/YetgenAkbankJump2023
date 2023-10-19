@@ -11,12 +11,10 @@ namespace YetGenAkbankJump.MVCClient.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IOpenAIService _openAiService;
 
-        public HomeController(ILogger<HomeController> logger, IOpenAIService openAiService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _openAiService = openAiService;
         }
         //[HttpGet]
         //public IActionResult Index()
@@ -28,21 +26,21 @@ namespace YetGenAkbankJump.MVCClient.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var imageResult = await _openAiService.Image.CreateImage(new ImageCreateRequest
-            {
-                Prompt = " Velociraptors with red ties",
-                N = 3,
-                Size = StaticValues.ImageStatics.Size.Size512,
-                ResponseFormat = StaticValues.ImageStatics.ResponseFormat.Url,
-                User = "KalayMaster"
-            });
+            //var imageResult = await _openAiService.Image.CreateImage(new ImageCreateRequest
+            //{
+            //    Prompt = " Velociraptors with red ties",
+            //    N = 3,
+            //    Size = StaticValues.ImageStatics.Size.Size512,
+            //    ResponseFormat = StaticValues.ImageStatics.ResponseFormat.Url,
+            //    User = "KalayMaster"
+            //});
 
-            List<string> urls;
+            //List<string> urls;
 
-            if (imageResult.Successful)
-            {
-               urls = imageResult.Results.Select(r => r.Url).ToList();
-            }
+            //if (imageResult.Successful)
+            //{
+            //   urls = imageResult.Results.Select(r => r.Url).ToList();
+            //}
 
             return View();
         }

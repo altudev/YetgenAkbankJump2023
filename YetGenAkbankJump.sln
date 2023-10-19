@@ -5,9 +5,15 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YetGenAkbankJump.OOPConsole", "YetGenAkbankJump.OOPConsole\YetGenAkbankJump.OOPConsole.csproj", "{41F0BB5E-22E8-4E7F-B0E4-71B524CD6C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetGenAkbankJump.MVCClient", "YetGenAkbankJump.MVCClient\YetGenAkbankJump.MVCClient.csproj", "{F020FA1E-23C9-4118-AD98-ADA63EDA399C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YetGenAkbankJump.MVCClient", "YetGenAkbankJump.MVCClient\YetGenAkbankJump.MVCClient.csproj", "{F020FA1E-23C9-4118-AD98-ADA63EDA399C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetGenAkbankJump.Shared", "YetGenAkbankJump.Shared\YetGenAkbankJump.Shared.csproj", "{CBD81759-A72E-4935-BD44-B8B41B73626A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YetGenAkbankJump.Shared", "YetGenAkbankJump.Shared\YetGenAkbankJump.Shared.csproj", "{CBD81759-A72E-4935-BD44-B8B41B73626A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetgenAkbankJump.Domain", "YetgenAkbankJump.Domain\YetgenAkbankJump.Domain.csproj", "{2FD6036B-83C0-4BD3-949C-44E8516E60C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetGenAkbankJump.WebApi", "YetGenAkbankJump.WebApi\YetGenAkbankJump.WebApi.csproj", "{4B926ABD-716B-4532-A5D1-805EF6DE2FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetGenAkbankJump.BlazorClient", "YetGenAkbankJump.BlazorClient\YetGenAkbankJump.BlazorClient.csproj", "{332822CE-D6C5-4F71-BE29-A799BACBFDC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{CBD81759-A72E-4935-BD44-B8B41B73626A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD81759-A72E-4935-BD44-B8B41B73626A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD81759-A72E-4935-BD44-B8B41B73626A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FD6036B-83C0-4BD3-949C-44E8516E60C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD6036B-83C0-4BD3-949C-44E8516E60C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD6036B-83C0-4BD3-949C-44E8516E60C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD6036B-83C0-4BD3-949C-44E8516E60C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B926ABD-716B-4532-A5D1-805EF6DE2FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B926ABD-716B-4532-A5D1-805EF6DE2FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B926ABD-716B-4532-A5D1-805EF6DE2FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B926ABD-716B-4532-A5D1-805EF6DE2FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{332822CE-D6C5-4F71-BE29-A799BACBFDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{332822CE-D6C5-4F71-BE29-A799BACBFDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{332822CE-D6C5-4F71-BE29-A799BACBFDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{332822CE-D6C5-4F71-BE29-A799BACBFDC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
