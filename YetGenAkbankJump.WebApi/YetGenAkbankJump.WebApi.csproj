@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.13" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\YetgenAkbankJump.Domain\YetgenAkbankJump.Domain.csproj" />
+    <ProjectReference Include="..\YetGenAkbankJump.Shared\YetGenAkbankJump.Shared.csproj" />
   </ItemGroup>
 
 </Project>

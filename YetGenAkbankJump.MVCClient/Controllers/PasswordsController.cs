@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YetGenAkbankJump.MVCClient.Models;
-using YetGenAkbankJump.OOPConsole.Utilities;
+using YetGenAkbankJump.Shared.Utilities;
 
 namespace YetGenAkbankJump.MVCClient.Controllers
 {

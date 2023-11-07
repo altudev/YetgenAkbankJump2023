@@ -1,0 +1,26 @@
+﻿@page "/"
+@using YetgenAkbankJump.BlazorDI.Services
+@using Microsoft.Extensions.Localization
+@using YetGenAkbankJump.Shared.Helpers
+@inject IToasterService toastService
+@inject IStringLocalizer<CommonTranslations> Localizer
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+
+@code
+{
+    protected override void OnAfterRender(bool firstRender)
+    {
+        toastService.ShowSuccess(Localizer[CommonTranslationKeys.WelcomeMessageBlazor]);
+
+        base.OnAfterRender(firstRender);
+    }
+}

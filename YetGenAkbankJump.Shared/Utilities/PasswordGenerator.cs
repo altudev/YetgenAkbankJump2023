@@ -1,9 +1,11 @@
 ﻿using System.Text;
 
-namespace YetGenAkbankJump.OOPConsole.Utilities
+namespace YetGenAkbankJump.Shared.Utilities
 {
     public class PasswordGenerator
     {
+        public int GeneratedPasswordsCount { get; set; } = 0;
+
         private readonly Random _random;
 
         private const string Numbers = "0123456789";
@@ -44,6 +46,8 @@ namespace YetGenAkbankJump.OOPConsole.Utilities
 
                 passwordBuilder.Append(acceptedChars[randomIndex]);
             }
+
+            GeneratedPasswordsCount++;
 
             return passwordBuilder.ToString();
         }
