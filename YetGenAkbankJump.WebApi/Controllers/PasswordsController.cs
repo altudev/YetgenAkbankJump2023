@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using YetGenAkbankJump.Shared.Services;
 using YetGenAkbankJump.Shared.Utilities;
+using YetGenAkbankJump.WebApi.Services;
 
 namespace YetGenAkbankJump.WebApi.Controllers
 {
@@ -10,11 +12,13 @@ namespace YetGenAkbankJump.WebApi.Controllers
     {
         private PasswordGenerator _passwordGenerator;
         private readonly RequestCountService _requestCountService;
+        private readonly ITextService _textService;
 
-        public PasswordsController(PasswordGenerator passwordGenerator, RequestCountService requestCountService)
+        public PasswordsController(PasswordGenerator passwordGenerator, RequestCountService requestCountService, ITextService textService)
         {
             _passwordGenerator = passwordGenerator;
             _requestCountService = requestCountService;
+            _textService = textService;
         }
 
         [HttpGet]

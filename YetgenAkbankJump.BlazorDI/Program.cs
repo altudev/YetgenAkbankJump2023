@@ -4,6 +4,7 @@ using Sotsera.Blazor.Toaster.Core.Models;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using YetgenAkbankJump.BlazorDI;
+using YetgenAkbankJump.BlazorDI.Extensions;
 using YetgenAkbankJump.BlazorDI.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -27,9 +28,13 @@ builder.Services.AddToaster(config =>
     config.PreventDuplicates = true;
     config.NewestOnTop = false;
 });
-var trCulture = new CultureInfo("tr-TR");
+//var trCulture = new CultureInfo("tr-TR");
 
-CultureInfo.DefaultThreadCurrentCulture = trCulture;
-CultureInfo.DefaultThreadCurrentUICulture = trCulture;
+//CultureInfo.DefaultThreadCurrentCulture = trCulture;
+//CultureInfo.DefaultThreadCurrentUICulture = trCulture;
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+
+await host.SetDefaultCulture();
+
+await host.RunAsync();

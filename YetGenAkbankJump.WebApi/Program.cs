@@ -1,7 +1,12 @@
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using System.Globalization;
+using YetGenAkbankJump.Persistence.Contexts;
+using YetGenAkbankJump.Persistence.Utilities;
+using YetGenAkbankJump.Shared;
+using YetGenAkbankJump.Shared.Services;
 using YetGenAkbankJump.Shared.Utilities;
+using YetGenAkbankJump.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +17,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<PasswordGenerator>(new PasswordGenerator());
+builder.Services.AddSingleton<PasswordGenerator>();
 
 builder.Services.AddSingleton<RequestCountService>(new RequestCountService());
+
+builder.Services.AddScoped<ExcelManager>();
+
+
+var textPath = builder.Configuration.GetSection("TextPath").Value;
+
+builder.Services.AddSingleton<IIPService, IPService>();
+
+//builder.Services.AddSingleton<ITextService,TextService>();
 
 builder.Services.AddCors(options =>
 {
@@ -25,6 +39,8 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowed((host) => true)
             .AllowAnyHeader());
 });
+
+builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddLocalization(options =>
 {
@@ -49,6 +65,8 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 
     options.ApplyCurrentCultureToResponseHeaders = true;
 });
+
+builder.Services.AddSharedServices();
 
 var app = builder.Build();
 

@@ -1,25 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
+    <PackageReference Include="ExcelDataReader.Mapping" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.13" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\YetgenAkbankJump.Domain\YetgenAkbankJump.Domain.csproj" />
-    <ProjectReference Include="..\YetGenAkbankJump.Persistence\YetGenAkbankJump.Persistence.csproj" />
-    <ProjectReference Include="..\YetGenAkbankJump.Shared\YetGenAkbankJump.Shared.csproj" />
   </ItemGroup>
 
 </Project>
