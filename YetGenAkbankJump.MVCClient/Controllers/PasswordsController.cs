@@ -11,7 +11,7 @@ namespace YetGenAkbankJump.MVCClient.Controllers
 
         public PasswordsController()
         {
-            _passwordGenerator = new PasswordGenerator();
+            
         }
 
         [HttpGet]

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 using YetGenAkbankJump.Persistence.Contexts;
 using YetGenAkbankJump.Persistence.Utilities;
 using YetGenAkbankJump.Shared;
@@ -23,12 +25,16 @@ builder.Services.AddSingleton<RequestCountService>(new RequestCountService());
 
 builder.Services.AddScoped<ExcelManager>();
 
+builder.Services.AddScoped<FakeDataService>();
+
+builder.Services.AddMemoryCache();
+
 
 var textPath = builder.Configuration.GetSection("TextPath").Value;
 
 builder.Services.AddSingleton<IIPService, IPService>();
 
-//builder.Services.AddSingleton<ITextService,TextService>();
+builder.Services.AddSingleton<ITextService,TextService>();
 
 builder.Services.AddCors(options =>
 {
@@ -40,7 +46,12 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
-builder.Services.AddDbContext<ApplicationDbContext>();
+var connectionString = builder.Configuration.GetSection("YetgenPostgreSQLDB").Value;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql(connectionString);
+});
 
 builder.Services.AddLocalization(options =>
 {

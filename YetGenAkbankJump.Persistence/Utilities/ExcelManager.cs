@@ -18,99 +18,103 @@ namespace YetGenAkbankJump.Persistence.Utilities
 
         public async Task LoadCountriesAsync(ExcelLoadFileDto excelLoadFileDto, CancellationToken cancellationToken)
         {
-            using (var stream = new MemoryStream(Convert.FromBase64String(excelLoadFileDto.Base64File)))
-            using (var importer = new ExcelImporter(stream))
-            {
-                // You can register class maps by type.
-                importer.Configuration.RegisterClassMap<CountryExcelMap>();
+            //using (var stream = new MemoryStream(Convert.FromBase64String(excelLoadFileDto.Base64File)))
+            //using (var importer = new ExcelImporter(stream))
+            //{
+            //    // You can register class maps by type.
+            //    importer.Configuration.RegisterClassMap<CountryExcelMap>();
 
-                ExcelSheet sheet = importer.ReadSheet();
-                CountryExcelDto[] countryDtos = sheet.ReadRows<CountryExcelDto>().ToArray();
+            //    ExcelSheet sheet = importer.ReadSheet();
+            //    CountryExcelDto[] countryDtos = sheet.ReadRows<CountryExcelDto>().ToArray();
 
-                var countries = new List<Country>();
+            //    var countries = new List<Country>();
 
-                foreach (var countryDto in countryDtos)
-                {
-                    countries.Add(new Country()
-                    {
-                        Id = countryDto.Id,
-                        Name = countryDto.Name,
-                        Iso2 = countryDto.Iso2,
-                        Iso3 = countryDto.Iso3,
-                        NumericCode = countryDto.NumericCode,
-                        PhoneCode = countryDto.PhoneCode,
-                        Capital = countryDto.Capital,
-                        Currency = countryDto.Currency,
-                        TId = countryDto.TId,
-                        Region = countryDto.Region,
-                        SubRegion = countryDto.SubRegion,
-                        Latitude = countryDto.Latitude,
-                        Longitude = countryDto.Longitude,
-                        WikiDataId = countryDto.WikiDataId,
-                        IsDeleted = false,
-                        CreatedOn = DateTimeOffset.Now,
-                        CreatedByUserId = "hkl2q51XYee4"
-                    });
-                }
+            //    foreach (var countryDto in countryDtos)
+            //    {
+            //        countries.Add(new Country()
+            //        {
+            //            Id = countryDto.Id,
+            //            Name = countryDto.Name,
+            //            Iso2 = countryDto.Iso2,
+            //            Iso3 = countryDto.Iso3,
+            //            NumericCode = countryDto.NumericCode,
+            //            PhoneCode = countryDto.PhoneCode,
+            //            Capital = countryDto.Capital,
+            //            Currency = countryDto.Currency,
+            //            TId = countryDto.TId,
+            //            Region = countryDto.Region,
+            //            SubRegion = countryDto.SubRegion,
+            //            Latitude = countryDto.Latitude,
+            //            Longitude = countryDto.Longitude,
+            //            WikiDataId = countryDto.WikiDataId,
+            //            IsDeleted = false,
+            //            CreatedOn = DateTimeOffset.Now,
+            //            CreatedByUserId = "hkl2q51XYee4"
+            //        });
+            //    }
 
-                using (var transaction = _applicationDbContext.Database.BeginTransaction())
-                {
-                    _applicationDbContext.Countries.AddRange(countries);
+            //    using (var transaction = _applicationDbContext.Database.BeginTransaction())
+            //    {
+            //        _applicationDbContext.Countries.AddRange(countries);
 
-                    _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Countries ON");
+            //        _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Countries ON");
 
-                    _applicationDbContext.SaveChanges();
+            //        _applicationDbContext.SaveChanges();
 
-                    _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Countries OFF");
+            //        _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Countries OFF");
 
-                    transaction.Commit();
-                }
+            //        transaction.Commit();
+            //    }
 
 
-            }
+            //}
+
+            return;
         }
 
         public async Task LoadCitiesAsync(ExcelLoadFileDto excelLoadFileDto, CancellationToken cancellationToken)
         {
-            using (var stream = new MemoryStream(Convert.FromBase64String(excelLoadFileDto.Base64File)))
-            using (var importer = new ExcelImporter(stream))
-            {
-                // You can register class maps by type.
-                importer.Configuration.RegisterClassMap<CityExcelMap>();
+            //using (var stream = new MemoryStream(Convert.FromBase64String(excelLoadFileDto.Base64File)))
+            //using (var importer = new ExcelImporter(stream))
+            //{
+            //    // You can register class maps by type.
+            //    importer.Configuration.RegisterClassMap<CityExcelMap>();
 
-                ExcelSheet sheet = importer.ReadSheet();
-                CityExcelDto[] cityDtos = sheet.ReadRows<CityExcelDto>().ToArray();
+            //    ExcelSheet sheet = importer.ReadSheet();
+            //    CityExcelDto[] cityDtos = sheet.ReadRows<CityExcelDto>().ToArray();
 
-                var cities = new List<City>();
+            //    var cities = new List<City>();
 
-                foreach (var cityDto in cityDtos)
-                {
-                    cities.Add(new City()
-                    {
-                        Id = cityDto.Id,
-                        Name = cityDto.Name,
-                        CountryId = cityDto.CountryId,
-                        Latitude = cityDto.Latitude,
-                        Longitude = cityDto.Longitude,
-                        CreatedOn = DateTimeOffset.Now,
-                        CreatedByUserId = "hkl2q51XYee4"
-                    });
-                }
+            //    foreach (var cityDto in cityDtos)
+            //    {
+            //        cities.Add(new City()
+            //        {
+            //            Id = cityDto.Id,
+            //            Name = cityDto.Name,
+            //            CountryId = cityDto.CountryId,
+            //            Latitude = cityDto.Latitude,
+            //            Longitude = cityDto.Longitude,
+            //            CreatedOn = DateTimeOffset.Now,
+            //            CreatedByUserId = "hkl2q51XYee4"
+            //        });
+            //    }
 
-                using (var transaction = _applicationDbContext.Database.BeginTransaction())
-                {
-                    _applicationDbContext.Cities.AddRange(cities);
+            //    using (var transaction = _applicationDbContext.Database.BeginTransaction())
+            //    {
+            //        _applicationDbContext.Cities.AddRange(cities);
 
-                    _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Cities ON");
+            //        _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Cities ON");
 
-                    _applicationDbContext.SaveChanges();
+            //        _applicationDbContext.SaveChanges();
 
-                    _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Cities OFF");
+            //        _applicationDbContext.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Cities OFF");
 
-                    transaction.Commit();
-                }
+            //        transaction.Commit();
+            //    }
 
-            }
+            //}
+
+            return;
         }
     }
 }
