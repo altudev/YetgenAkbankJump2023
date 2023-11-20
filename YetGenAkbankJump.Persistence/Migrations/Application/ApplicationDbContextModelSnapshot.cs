@@ -8,7 +8,7 @@ using YetGenAkbankJump.Persistence.Contexts;
 
 #nullable disable
 
-namespace YetGenAkbankJump.Persistence.Migrations
+namespace YetGenAkbankJump.Persistence.Migrations.Application
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -17,7 +17,7 @@ namespace YetGenAkbankJump.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.13")
+                .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -61,141 +61,6 @@ namespace YetGenAkbankJump.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories", (string)null);
-                });
-
-            modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("CreatedByUserId")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("character varying(75)");
-
-                    b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DeletedByUserId")
-                        .HasMaxLength(75)
-                        .HasColumnType("character varying(75)");
-
-                    b.Property<DateTimeOffset?>("DeletedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTimeOffset?>("LastModifiedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal?>("Latitude")
-                        .HasColumnType("decimal(10,8)");
-
-                    b.Property<decimal?>("Longitude")
-                        .HasColumnType("decimal(11,8)");
-
-                    b.Property<string>("ModifiedByUserId")
-                        .HasMaxLength(75)
-                        .HasColumnType("character varying(75)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("Cities", (string)null);
-                });
-
-            modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Capital")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("CreatedByUserId")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("character varying(75)");
-
-                    b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Currency")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("DeletedByUserId")
-                        .HasMaxLength(75)
-                        .HasColumnType("character varying(75)");
-
-                    b.Property<DateTimeOffset?>("DeletedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Iso2")
-                        .HasColumnType("char(2)");
-
-                    b.Property<string>("Iso3")
-                        .HasColumnType("char(3)");
-
-                    b.Property<DateTimeOffset?>("LastModifiedOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal?>("Latitude")
-                        .HasColumnType("decimal(10,8)");
-
-                    b.Property<decimal?>("Longitude")
-                        .HasColumnType("decimal(11,8)");
-
-                    b.Property<string>("ModifiedByUserId")
-                        .HasMaxLength(75)
-                        .HasColumnType("character varying(75)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("NumericCode")
-                        .HasColumnType("char(3)");
-
-                    b.Property<string>("PhoneCode")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("Region")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("SubRegion")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("TId")
-                        .HasColumnType("varchar(10)");
-
-                    b.Property<string>("WikiDataId")
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.Product", b =>
@@ -337,17 +202,6 @@ namespace YetGenAkbankJump.Persistence.Migrations
                     b.ToTable("Students", (string)null);
                 });
 
-            modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.City", b =>
-                {
-                    b.HasOne("YetgenAkbankJump.Domain.Entities.Country", "Country")
-                        .WithMany("Cities")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
             modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.ProductCategory", b =>
                 {
                     b.HasOne("YetgenAkbankJump.Domain.Entities.Category", "Category")
@@ -370,11 +224,6 @@ namespace YetGenAkbankJump.Persistence.Migrations
             modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.Category", b =>
                 {
                     b.Navigation("ProductCategories");
-                });
-
-            modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.Country", b =>
-                {
-                    b.Navigation("Cities");
                 });
 
             modelBuilder.Entity("YetgenAkbankJump.Domain.Entities.Product", b =>
