@@ -1,0 +1,47 @@
+﻿@using YetgenAkbankJump.Domain.Enums
+@model YetGenAkbankJump.IdentityMVC.ViewModels.AuthRegisterViewModel
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form asp-action="Register" asp-controller="Auth" method="post" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" id="Email" required>
+                    <div class="invalid-feedback">Email is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="UserName">Username</label>
+                    <input asp-for="UserName" type="text" class="form-control" id="UserName" required minlength="2">
+                    <div class="invalid-feedback">Username is required and must be at least 2 characters long.</div>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" id="Password" required minlength="6">
+                    <div class="invalid-feedback">Password is required and must be at least 6 characters long.</div>
+                </div>
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    <input asp-for="FirstName" type="text" class="form-control" id="FirstName" required>
+                    <div class="invalid-feedback">First Name is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="SurName">Surname</label>
+                    <input asp-for="SurName" type="text" class="form-control" id="SurName" required>
+                    <div class="invalid-feedback">Surname is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="BirthDate">Birth Date</label>
+                    <input asp-for="BirthDate" type="date" class="form-control" id="BirthDate">
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control" id="Gender" required>
+                        <option value="">Select Gender</option>
+                    </select>
+                    <div class="invalid-feedback">Gender is required.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

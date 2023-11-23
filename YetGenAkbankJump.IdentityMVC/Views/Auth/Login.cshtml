@@ -1,0 +1,23 @@
+﻿@model YetGenAkbankJump.IdentityMVC.ViewModels.AuthLoginViewModel
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form asp-action="Login" asp-controller="Auth" method="post" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" id="Email" required>
+                    <div class="invalid-feedback">Email is required.</div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" id="Password" required minlength="6">
+                    <div class="invalid-feedback">Password is required and must be at least 6 characters long.</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
