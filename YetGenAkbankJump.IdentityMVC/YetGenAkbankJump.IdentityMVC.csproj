@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.14" />
     <PackageReference Include="NToastNotify" Version="8.0.0" />
+    <PackageReference Include="Resend" Version="0.0.5" />
   </ItemGroup>
 
   <ItemGroup>

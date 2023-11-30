@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Resend;
 using YetgenAkbankJump.Domain.Identity;
 using YetGenAkbankJump.Persistence.Contexts;
 
@@ -9,6 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddControllersWithViews()
     .AddNToastNotifyToastr();
+
+builder.Services.AddOptions();
+builder.Services.AddHttpClient<ResendClient>();
+builder.Services.Configure<ResendClientOptions>(o =>
+{
+    o.ApiToken = "";
+});
+builder.Services.AddTransient<IResend, ResendClient>();
 
 var connectionString = builder.Configuration.GetSection("YetgenPostgreSQLDB").Value;
 
@@ -37,7 +46,8 @@ builder.Services.AddIdentity<User, Role>(options =>
     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@$";
     options.User.RequireUniqueEmail = true;
 
-}).AddEntityFrameworkStores<YetgenIdentityContext>();
+}).AddEntityFrameworkStores<YetgenIdentityContext>()
+    .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
 
 builder.Services.Configure<SecurityStampValidatorOptions>(options =>
 {
